@@ -1,10 +1,10 @@
-- [-] Project Development
-  - [-] Tools
-    - [-] Graphics
-    - [-] Parser
-    - [-] Workload
-  - [-] Improve Simulation Code
-  - [-] Add New Resources to Simulation Code
-- [-] Writing
+- [ ] Project Development
+  - [ ] Tools
+    - [ ] Graphics
+    - [ ] Parser
+    - [ ] Workload
+  - [ ] Improve Simulation Code
+  - [ ] Add New Resources to Simulation Code
+- [ ] Writing
   - [X] Qualification
   - [ ] Dissertation
