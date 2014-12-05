@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python2
 
 from xw import simulator_xw
 from boinc import simulator_boinc
@@ -17,7 +17,8 @@ Options:
     --end_time=<val>    : simulation end time (default is 10000000000)
     
     --avg_power=<val>   : set node avg power (default is 1000 ops/s)
-    --heter_power        : use heterogeneous node power
+    --dir_power=<dir>   : set directory with node power
+    --heter_power       : use heterogeneous node power
 
 SpeQuloS options:
     --spequlos          : enable SpeQuloS
@@ -51,7 +52,7 @@ use_spequlos = False
 sqs = spequlos.SpeQuloS()
 
 try:                                
-    opts, args = getopt.gnu_getopt(sys.argv[1:], "s:e:", ["start_time=", "end_time=", "avg_power=", "heter_power", "spequlos", "credits=", "thres_compl=","thres_assign=", "assign_compl_dist", "greedy","conservative","fixed=","naive","reschedule","migrate"])
+    opts, args = getopt.gnu_getopt(sys.argv[1:], "s:e:", ["start_time=", "end_time=", "avg_power=", "dir_power=", "heter_power", "spequlos", "credits=", "thres_compl=","thres_assign=", "assign_compl_dist", "greedy","conservative","fixed=","naive","reschedule","migrate"])
 
     for opt,arg in opts:
         if opt in ("-s","--start_time="):
@@ -62,6 +63,9 @@ try:
 
         elif opt in ("--avg_power="):
             avg_power=int(arg)
+
+        elif opt in ("--dir_power="):
+            dir_power=str(arg)
 
         elif opt in ("--heter_power"):
             heter_power=True
@@ -110,7 +114,6 @@ try:
     trace_dir=args[1]
     job_desc_file=args[2]
 
-
 except Exception as e:
     print e          
     usage()                         
@@ -123,5 +126,5 @@ if dg_type == "XW":
     simulator_xw.start_xw_sim(trace_dir,job_desc_file,start_time,end_time,sqs,avg_power,heter_power)
 
 elif dg_type == "BOINC":
-    simulator_boinc.start_boinc_sim(trace_dir,job_desc_file,start_time,end_time,sqs,avg_power,heter_power)
+    simulator_boinc.start_boinc_sim(trace_dir,job_desc_file,start_time,end_time,sqs,avg_power,heter_power,dir_power)
 

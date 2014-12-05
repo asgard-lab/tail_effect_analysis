@@ -22,7 +22,7 @@ SCHED_ALT=0
 
 
 
-def start_boinc_sim(trace_dir,job_desc_file,start_time,end_time,sqs=None,avg_power=1000,heter_power=False):
+def start_boinc_sim(trace_dir,job_desc_file,start_time,end_time,sqs=None,avg_power=1000,heter_power=False,dir_power=None):
     n_wus_remaining=0
     wus=[]
     
@@ -30,7 +30,7 @@ def start_boinc_sim(trace_dir,job_desc_file,start_time,end_time,sqs=None,avg_pow
     ev_queue = EventQueueBOINC()
     
     print "--Loading trace--"
-    tools.load_trace_dir(ev_queue,trace_dir,start_time=start_time,end_time=end_time,avg_power=avg_power,heter_power=heter_power)
+    tools.load_trace_dir(ev_queue,trace_dir,start_time=start_time,end_time=end_time,avg_power=avg_power,heter_power=heter_power,dir_power=dir_power)
     
     print "--Loading WUs--"
     tools.load_job_desc_file(ev_queue,job_desc_file,start_time,bot_id=DEFAULT_BOT_ID)
